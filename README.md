@@ -1,6 +1,6 @@
 # TimeTracker
 A part of a new project to track habits
 
--I/O is using user input, with commands of: start, stop, reset and quit<br>
--Dates.txt contains the dates started and stopped<br>
--Will be the base of the I/O class for habit tracking app
+-I/O is implemented with buttons contained in the GUI<br>
+-Dates.txt changed to Dates.csv for importing into your favorite spreadsheet software<br>
+-Test of basic idea of tracking habits
