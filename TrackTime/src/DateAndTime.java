@@ -41,28 +41,40 @@ public class DateAndTime {
 			e.printStackTrace();
 		}
 	}
-	public void start() {
-		Scanner keyboard = new Scanner(System.in);
-		while(true) {
-			String user = "";
-			user += keyboard.next();
-			if (user.toLowerCase().contains("quit")) {
-				break;
-			} else if (user.equals("reset")) {
-				resetData();
-				break;
-			} else {
-				Date date = new Date();
-				writeTime(user + ": " + date.toString());
-				System.out.println(readTime());
+	public void start(String buttonAction) {
+		Date date = new Date();
+		writeTime(buttonAction + ", " + date.toString());
+		System.out.println(readTime());
+
+	}
+	public String LastSession() {
+		String time = "";
+		try {
+			Scanner timeFile = new Scanner(new File(this.fileName));
+			while(timeFile.hasNextLine()) {
+				time = timeFile.nextLine();
+				
 			}
+			timeFile.close();
+		} catch (FileNotFoundException e) {
+			System.err.print(this.fileName + " could not be read!");
+			e.printStackTrace();
 		}
-		keyboard.close();
+		if (time.isEmpty()) {
+			return "0";
+		}
+		return time.substring(4).replaceAll("t, ", "");
 	}
-	public static void main(String[] args) {
-		System.out.println("Welcome to tracking times, type start to start and stop to record end");
-		DateAndTime testFile = new DateAndTime(args[0]);
-		testFile.start();
-		System.out.println(testFile.readTime());
+	public String lastAction() {
+		
+		if (readTime().lastIndexOf("end") > readTime().lastIndexOf("start")) {
+			return "end";
+		} else if (readTime().isEmpty()) {
+			return "was empti";
+		}
+		else {
+			return "start";
+		}
 	}
+	
 }
