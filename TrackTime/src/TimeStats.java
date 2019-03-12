@@ -5,16 +5,15 @@ import java.util.*;
 
 public class TimeStats extends DateAndTime {
 	
+	protected ArrayList<String> startTimes = new ArrayList<String>();
+	protected ArrayList<String> endTimes = new ArrayList<String>();
+	
 	public TimeStats() {	
 		this("/Users/j4k3/eclipse-workspace/TrackTime/src/Dates.csv");
 	}
 	private TimeStats(String file) {
 		super(file);
 	}
-
-	protected ArrayList<String> startTimes = new ArrayList<String>();
-	protected ArrayList<String> endTimes = new ArrayList<String>();
-	
 	
 	public void ParseTime() {
 		String allTimeString;
@@ -78,5 +77,4 @@ public class TimeStats extends DateAndTime {
 		System.out.println(statsTest.averageTime(statsTest.startTimes.get(1), 2));
 		System.out.println(statsTest.allTimeAverage());
 	}
-
 }
