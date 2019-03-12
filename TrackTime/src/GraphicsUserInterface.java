@@ -29,7 +29,7 @@ public class GraphicsUserInterface extends JFrame implements ActionListener {
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		add(startContainer());
-		super.setVisible(true);
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
