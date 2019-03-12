@@ -3,7 +3,7 @@ import java.util.*;
 
 public class DateAndTime {
 
-	private String fileName = "";
+	protected String fileName = "";
 	public DateAndTime(String file) {
 		this.fileName = file;
 	}
@@ -45,7 +45,6 @@ public class DateAndTime {
 		Date date = new Date();
 		writeTime(buttonAction + ", " + date.toString());
 		System.out.println(readTime());
-
 	}
 	public String LastSession() {
 		String time = "";
@@ -63,10 +62,10 @@ public class DateAndTime {
 		if (time.isEmpty()) {
 			return "0";
 		}
+		
 		return time.substring(4).replaceAll("t, ", "");
 	}
 	public String lastAction() {
-		
 		if (readTime().lastIndexOf("end") > readTime().lastIndexOf("start")) {
 			return "end";
 		} else if (readTime().isEmpty()) {
