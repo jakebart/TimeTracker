@@ -19,7 +19,7 @@ public class GraphicsUserInterface extends JFrame implements ActionListener {
 	private int width = 100;
 	private int height = 60;
 	
-	DateAndTime dateClass = new DateAndTime("/Users/j4k3/eclipse-workspace/TrackTime/src/Dates.csv");
+	DateAndTime dateClass = new DateAndTime("/Users//Path/src/Dates.csv");
 	
 	public GraphicsUserInterface() {
 		setTitle("Time Tracker");
