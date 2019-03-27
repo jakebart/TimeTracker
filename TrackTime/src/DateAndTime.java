@@ -10,7 +10,7 @@ public class DateAndTime {
 	public void writeTime(String Date) {
 		try {
 			PrintWriter record = new PrintWriter(new FileWriter(this.fileName, true));
-			record.write(Date + "\n");
+			record.write(Date + ", \n");
 			record.close();
 		} catch (Exception e) {
 			System.err.print("File: " + this.fileName + " could not be opened!");
@@ -41,29 +41,16 @@ public class DateAndTime {
 			e.printStackTrace();
 		}
 	}
-	public void start(String buttonAction) {
+	public void start(String buttonAction, String option) {
 		Date date = new Date();
-		writeTime(buttonAction + ", " + date.toString());
-		System.out.println(readTime());
+		writeTime(buttonAction + ", " + date.toString() + ", " + option);
 	}
 	public String LastSession() {
-		String time = "";
-		try {
-			Scanner timeFile = new Scanner(new File(this.fileName));
-			while(timeFile.hasNextLine()) {
-				time = timeFile.nextLine();
-				
-			}
-			timeFile.close();
-		} catch (FileNotFoundException e) {
-			System.err.print(this.fileName + " could not be read!");
-			e.printStackTrace();
-		}
-		if (time.isEmpty()) {
+		String[] times = this.readTime().split(", ");
+		if (times.length == 0) {
 			return "0";
 		}
-		
-		return time.substring(4).replaceAll("t, ", "");
+		return times[times.length-3];
 	}
 	public String lastAction() {
 		if (readTime().lastIndexOf("end") > readTime().lastIndexOf("start")) {
